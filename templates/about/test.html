@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<script src="{{ STATIC_URL }}js/jquery-1.7.min.js"></script>
+
+        <script src="{{ STATIC_URL }}js/jquery.form.js"></script>
+
+        <script src="{{ STATIC_URL }}js/post.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" media="screen" />
+
+		<style type="text/css">
+			.butt {
+				border-style: solid;
+                border-width: 2px;
+                border-color: white;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="page-wrap">
+		
+		<form action="#" method="post">
+
+			<fieldset id="step_1">
+			
+				<legend>Choose Type of Post</legend>
+			
+				<label for="num_attendees">
+					Choose the kind of content you want to post
+				</label>
+				<div id="num_attendees">
+					<div id="opt_0" class="butt">Mood</div>
+					<div id="opt_1" class="butt">Post</div>
+					<div id="opt_2" class="butt">Dietary</div>
+				</div>
+
+				<div>
+					   
+				</div>
+			
+				<br />
+			
+				<div id="Mood" class="name_wrap">
+					<label for="name_attendee_1">
+							How do you feel:
+					</label>
+					<input type="text" id="name_attendee_1" class="name_input"></input>
+				</div>
+			
+				<div id="Post" class="name_wrap">
+					<label for="name_attendee_2">
+							Say something:
+					</label>
+					<input type="text" id="name_attendee_2" class="name_input"></input>
+				</div>
+			
+				<div id="Dietary" class="name_wrap">
+					<label for="name_attendee_3">
+							Have you eaten?
+					</label>
+					<input type="text" id="name_attendee_3" class="name_input"></input>
+				</div>
+			
+			</fieldset>
+		
+
+		</form>
+	
+	</div>
+	</body>
+</html>
+

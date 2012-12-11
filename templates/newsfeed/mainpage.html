@@ -1,0 +1,159 @@
+{% extends "banner_base.html" %}
+
+{% load i18n %}
+{% load bootstrap_tags %}
+{% load ifsetting_tag %}
+
+{% block head_title %}{% trans "Welcome" %}{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block banner %}
+    <script src="{{ STATIC_URL }}js/jquery.form.js"></script>
+
+    <script src="{{ STATIC_URL }}js/post.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" media="screen" />
+
+        <style type="text/css">
+            .butt {
+                border-width: 2px;
+                border-color: rgba(255, 255, 255, 0.05);
+                width: 50px;
+                margin-right: 75px;
+                display:inline;
+                font-style:  italic;
+            }
+            .butt:hover {
+                background-color: rgba(255, 238, 255, 0.05);
+                cursor: pointer; cursor: hand
+            }
+            .mood-icon {
+                height: 50px;
+                width: 50px;
+            }
+            .mood-icon:hover {
+                height: 50px;
+                width: 50px;
+                background-color: yellow;
+                cursor: pointer; cursor: hand
+            }
+
+        </style>
+
+    <h1>{% trans "Welcome to Patient Main Page" %}</h1>
+    <p>
+        {% blocktrans %}
+        
+        {% endblocktrans %}
+    </p>
+
+    <p>{% blocktrans %}You can Make a Post Here!</a>{% endblocktrans %}</p>
+
+    <div id="page-wrap">
+        
+        <form action="#" method="post">
+
+            <fieldset id="step_1">
+            
+                
+                <p>Choose the kind of content you want to post</p>
+                
+                
+                <div id="num_attendees">
+                    <div id="opt_0" class="butt">Mood</div>
+                    <div id="opt_1" class="butt">Post</div>
+                    <div id="opt_2" class="butt">Dietary</div>
+                </div>
+            
+                <br />
+            
+                <div id="Mood" class="name_wrap">
+                    I feel: <div id="choice"></div>
+                    <br />
+                    
+                    <div id="Mood-Pos" class="butt">Good</div>
+                    <div id="Mood-Neg" class="butt">Bad</div>
+                    <div id="Mood-Neu" class="butt">Neutral</div>  
+                    <br />   
+
+                    <div id="Pos-icon" class="name_wrap2">
+                    {% for dir in positive %}
+                            <img id="pos{{dir}}" class="mood-icon" src="{{ STATIC_URL }}img/mood-icon/positive/{{dir}}"   alt="false">
+                    {% endfor %}
+                    </div>
+                    <br/>
+                    <div id="Neg-icon" class="name_wrap2">
+                    {% for dir in negative %}
+                            <img id="neg{{dir}}" class="mood-icon"  src="{{ STATIC_URL }}img/mood-icon/negative/{{dir}}"   alt="false">
+                    {% endfor %}
+                    </div>
+                    <br/>
+                    <div id="Neu-icon" class="name_wrap2">
+                    {% for dir in neutral %}
+                            <img id="neu{{dir}}" class="mood-icon" src="{{ STATIC_URL }}img/mood-icon/neutral/{{dir}}" alt="false">
+                    {% endfor %}
+                    </div>
+
+                    <input id="mood_submit" type="submit" value="Submit" style="display:none;">
+
+                </div>
+
+                <script type="text/javascript">
+                            function SetNewSize(textarea){
+                                var tb = document.getElementById('submit_butt');
+                                if (tb.style.display == 'none') {
+                                    tb.style.display = '';
+                                }
+                            }
+                </script>
+
+                <div id="Post" class="name_wrap">                   
+                    <form action="{% url post_status %}" method="post">
+                        {% csrf_token %}
+                        <textarea name="whatever" onKeyUp="SetNewSize(this);" value="message" class="textarea" onFocus="this.value=''; return false;">
+                            Type in your words here
+                        </textarea> 
+                        <br />
+                        <br />
+                        <input id="submit_butt" type="submit" value="Submit" style="display:none;">
+                    </form>
+                </div>
+
+            
+                <div id="Dietary" class="name_wrap">
+                Have you eaten?
+                To be developed
+                </div>
+            
+            </fieldset>
+        
+
+        </form>
+    
+    </div>
+
+    
+
+	<!--<form id="StatusForm" method="POST" action="{% url post_status %}" autocapitalize="off">
+        {% csrf_token %}
+        <fieldset>
+                {{ form|as_bootstrap }}
+        </fieldset>
+        <input name="message" type="text" class="moneyHeader" id="textfield3" style="text-align:center" />
+        <div class="actions">
+                <button type="submit" class="btn primary">{% trans "Post" %}</button>
+        </div>
+    </form>-->
+	
+    
+   
+{% endblock %}
+{% block column-1 %}
+{% endblock %}
+{% block column-2 %}
+{% endblock %}
+{% block column-3 %}
+{% endblock %}
+{% block column-4 %}
+{% endblock %}

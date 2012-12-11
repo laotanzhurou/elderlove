@@ -1,0 +1,41 @@
+{% extends "banner_base.html" %}
+
+{% load i18n %}
+<!--
+{% load ifsetting_tag %}-->
+
+{% block head_title %}{% trans "Welcome" %}{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block banner %}
+    <h1>{% trans "Welcome to ElderLove" %}</h1>
+    <p>
+        {% blocktrans %}
+        Elderlove is a place for elderly people to enjoy social network
+        {% endblocktrans %}
+    </p>
+    
+    
+    
+    {% if user.is_authenticated %}
+        {% url what_next as what_next_url %}
+        <p class="what_next">{% blocktrans %}Wondering <a href="{{ what_next_url }}" class="btn primary large">What Next</a>?{% endblocktrans %}</p>
+    {% else %}
+        {% url acct_login as login_url %}
+        {% ifsetting ACCOUNT_OPEN_SIGNUP %}
+            {% url acct_signup as signup_url %}
+            <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn">Log In</a> or <a href="{{ signup_url }}" class="btn primary">Sign Up</a> to try out the site.{% endblocktrans %}</p>
+        {% else %}
+            <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn primary large">Log In</a> to try out the site.{% endblocktrans %}</p>
+        {% endifsetting %}
+    {% endif %}
+{% endblock %}
+{% block column-1 %}
+{% endblock %}
+{% block column-2 %}
+{% endblock %}
+{% block column-3 %}
+{% endblock %}
+{% block column-4 %}
+{% endblock %}
